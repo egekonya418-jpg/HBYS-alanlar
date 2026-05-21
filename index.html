@@ -1,0 +1,567 @@
+# Tek Parça Modern HealthTech Landing Page (JavaScript Yok)
+
+```html
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>HealthTech Systems</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#06131f;
+    color:white;
+    overflow-x:hidden;
+}
+
+header{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    padding:20px 80px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:rgba(6,19,31,0.85);
+    backdrop-filter:blur(14px);
+    border-bottom:1px solid rgba(255,255,255,0.08);
+    z-index:1000;
+}
+
+.logo{
+    font-size:30px;
+    font-weight:700;
+    color:#00d4ff;
+}
+
+nav a{
+    text-decoration:none;
+    color:white;
+    margin-left:30px;
+    transition:0.3s;
+    font-weight:500;
+}
+
+nav a:hover{
+    color:#00d4ff;
+}
+
+.hero{
+    height:100vh;
+    background:
+    linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),
+    url('https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?q=80&w=1600&auto=format&fit=crop');
+    background-size:cover;
+    background-position:center;
+    display:flex;
+    align-items:center;
+    padding:0 80px;
+    position:relative;
+}
+
+.hero::before{
+    content:'';
+    position:absolute;
+    width:500px;
+    height:500px;
+    background:#00b4d8;
+    filter:blur(140px);
+    opacity:0.18;
+    top:-150px;
+    right:-100px;
+}
+
+.hero-content{
+    position:relative;
+    z-index:2;
+    max-width:700px;
+}
+
+.hero h1{
+    font-size:72px;
+    line-height:1.1;
+    margin-bottom:25px;
+}
+
+.hero p{
+    font-size:22px;
+    color:#dbeafe;
+    line-height:1.8;
+    margin-bottom:40px;
+}
+
+.btn{
+    display:inline-block;
+    padding:16px 40px;
+    border-radius:12px;
+    text-decoration:none;
+    color:white;
+    background:linear-gradient(135deg,#00b4d8,#0077b6);
+    font-weight:600;
+    transition:0.3s;
+    box-shadow:0 10px 30px rgba(0,180,216,0.35);
+}
+
+.btn:hover{
+    transform:translateY(-5px);
+}
+
+.stats{
+    padding:120px 80px;
+    background:#081826;
+}
+
+.stats-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:30px;
+}
+
+.stat-box{
+    background:rgba(255,255,255,0.05);
+    border:1px solid rgba(255,255,255,0.08);
+    padding:45px;
+    border-radius:22px;
+    text-align:center;
+    transition:0.3s;
+    backdrop-filter:blur(12px);
+}
+
+.stat-box:hover{
+    transform:translateY(-10px);
+    border-color:#00b4d8;
+}
+
+.stat-box h2{
+    font-size:48px;
+    color:#00d4ff;
+    margin-bottom:10px;
+}
+
+.stat-box p{
+    color:#dbeafe;
+}
+
+.about{
+    padding:120px 80px;
+    display:flex;
+    align-items:center;
+    gap:60px;
+}
+
+.about img{
+    width:50%;
+    border-radius:24px;
+    box-shadow:0 20px 50px rgba(0,0,0,0.35);
+}
+
+.about-text{
+    width:50%;
+}
+
+.about-text h2{
+    font-size:52px;
+    margin-bottom:25px;
+}
+
+.about-text p{
+    line-height:1.9;
+    color:#cbd5e1;
+    margin-bottom:35px;
+}
+
+.services{
+    padding:120px 80px;
+    background:#07111c;
+}
+
+.section-title{
+    text-align:center;
+    font-size:48px;
+    margin-bottom:70px;
+}
+
+.service-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:35px;
+}
+
+.service-card{
+    padding:40px 35px;
+    border-radius:24px;
+    background:rgba(255,255,255,0.05);
+    border:1px solid rgba(255,255,255,0.08);
+    backdrop-filter:blur(10px);
+    transition:0.3s;
+}
+
+.service-card:hover{
+    transform:translateY(-10px);
+    border-color:#00b4d8;
+}
+
+.service-card h3{
+    color:#00d4ff;
+    margin-bottom:18px;
+    font-size:24px;
+}
+
+.service-card p{
+    color:#d1d5db;
+    line-height:1.8;
+}
+
+.partners{
+    padding:120px 80px;
+    background:#081826;
+    text-align:center;
+}
+
+.partner-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:25px;
+}
+
+.partner-grid div{
+    padding:35px;
+    border-radius:20px;
+    background:rgba(255,255,255,0.05);
+    border:1px solid rgba(255,255,255,0.08);
+    transition:0.3s;
+    font-weight:600;
+}
+
+.partner-grid div:hover{
+    transform:translateY(-8px);
+    border-color:#00d4ff;
+}
+
+.testimonials{
+    padding:120px 80px;
+    background:#07111c;
+}
+
+.testimonial-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:30px;
+}
+
+.testimonial-card{
+    padding:35px;
+    border-radius:22px;
+    background:rgba(255,255,255,0.05);
+    border:1px solid rgba(255,255,255,0.08);
+    transition:0.3s;
+}
+
+.testimonial-card:hover{
+    transform:translateY(-10px);
+}
+
+.testimonial-card p{
+    line-height:1.8;
+    color:#dbeafe;
+    margin-bottom:25px;
+}
+
+.testimonial-card h4{
+    color:#00d4ff;
+}
+
+.contact{
+    padding:120px 80px;
+    background:#081826;
+}
+
+.contact-container{
+    max-width:750px;
+    margin:auto;
+}
+
+form{
+    display:flex;
+    flex-direction:column;
+}
+
+input,
+textarea{
+    padding:20px;
+    margin-bottom:20px;
+    border:none;
+    border-radius:14px;
+    background:rgba(255,255,255,0.06);
+    border:1px solid rgba(255,255,255,0.08);
+    color:white;
+    font-size:16px;
+}
+
+input::placeholder,
+textarea::placeholder{
+    color:#cbd5e1;
+}
+
+button{
+    padding:18px;
+    border:none;
+    border-radius:14px;
+    background:linear-gradient(135deg,#00b4d8,#0077b6);
+    color:white;
+    font-size:17px;
+    cursor:pointer;
+    transition:0.3s;
+    font-weight:600;
+}
+
+button:hover{
+    transform:translateY(-5px);
+}
+
+footer{
+    background:#02070d;
+    text-align:center;
+    padding:40px 20px;
+    color:#94a3b8;
+    border-top:1px solid rgba(255,255,255,0.06);
+}
+
+@media(max-width:900px){
+
+    header{
+        padding:20px;
+        flex-direction:column;
+    }
+
+    nav{
+        margin-top:15px;
+    }
+
+    .hero,
+    .about,
+    .services,
+    .stats,
+    .partners,
+    .testimonials,
+    .contact{
+        padding-left:20px;
+        padding-right:20px;
+    }
+
+    .hero h1{
+        font-size:42px;
+    }
+
+    .hero p{
+        font-size:18px;
+    }
+
+    .about{
+        flex-direction:column;
+    }
+
+    .about img,
+    .about-text{
+        width:100%;
+    }
+
+}
+
+</style>
+</head>
+<body>
+
+<header>
+<div class="logo">HealthTech</div>
+
+<nav>
+<a href="#home">Ana Sayfa</a>
+<a href="#about">Hakkımızda</a>
+<a href="#services">Çözümler</a>
+<a href="#contact">İletişim</a>
+</nav>
+</header>
+
+<section class="hero" id="home">
+<div class="hero-content">
+
+<h1>
+Sağlık Teknolojilerinde Yeni Nesil Dönüşüm
+</h1>
+
+<p>
+HBYS, e-Reçete, PACS ve Yapay Zeka destekli dijital sağlık çözümleri ile geleceği şekillendiriyoruz.
+</p>
+
+<a href="#services" class="btn">
+Çözümleri Keşfet
+</a>
+
+</div>
+</section>
+
+<section class="stats">
+<div class="stats-grid">
+
+<div class="stat-box">
+<h2>125M+</h2>
+<p>Hasta Verisi</p>
+</div>
+
+<div class="stat-box">
+<h2>250M+</h2>
+<p>Günlük İşlem</p>
+</div>
+
+<div class="stat-box">
+<h2>80K+</h2>
+<p>Sağlık Tesisi</p>
+</div>
+
+<div class="stat-box">
+<h2>76M+</h2>
+<p>Aktif Kullanıcı</p>
+</div>
+
+</div>
+</section>
+
+<section class="about" id="about">
+
+<img src="https://images.unsplash.com/photo-1581595219315-a187dd40c322?q=80&w=1200&auto=format&fit=crop">
+
+<div class="about-text">
+
+<h2>Dijital Sağlıkta Global Güç</h2>
+
+<p>
+Sağlık bilişimi, veri güvenliği, mobil sağlık uygulamaları ve yapay zeka destekli analiz sistemleri geliştiriyoruz.
+</p>
+
+<a href="#services" class="btn">Daha Fazla</a>
+
+</div>
+</section>
+
+<section class="services" id="services">
+
+<h2 class="section-title">Çözümlerimiz</h2>
+
+<div class="service-grid">
+
+<div class="service-card">
+<h3>HBYS Sistemleri</h3>
+<p>Modern hastane bilgi yönetim altyapıları.</p>
+</div>
+
+<div class="service-card">
+<h3>PACS & DICOM</h3>
+<p>Tıbbi görüntüleme ve arşiv çözümleri.</p>
+</div>
+
+<div class="service-card">
+<h3>e-Reçete</h3>
+<p>Akıllı reçete ve ilaç yönetim sistemleri.</p>
+</div>
+
+<div class="service-card">
+<h3>Yapay Zeka</h3>
+<p>AI destekli sağlık veri analizi teknolojileri.</p>
+</div>
+
+<div class="service-card">
+<h3>Mobil Sağlık</h3>
+<p>Hasta ve doktor odaklı mobil uygulamalar.</p>
+</div>
+
+<div class="service-card">
+<h3>Bulut Teknolojileri</h3>
+<p>Güvenli ve ölçeklenebilir sağlık altyapıları.</p>
+</div>
+
+</div>
+</section>
+
+<section class="partners">
+
+<h2 class="section-title">Global Partnerler</h2>
+
+<div class="partner-grid">
+<div>Microsoft Azure</div>
+<div>Google Cloud</div>
+<div>Oracle Health</div>
+<div>IBM Watson</div>
+<div>Amazon AWS</div>
+</div>
+
+</section>
+
+<section class="testimonials">
+
+<h2 class="section-title">Müşteri Deneyimleri</h2>
+
+<div class="testimonial-grid">
+
+<div class="testimonial-card">
+<p>
+“HealthTech çözümleri sayesinde operasyonlarımız çok daha hızlı hale geldi.”
+</p>
+<h4>Acıbadem Grup</h4>
+</div>
+
+<div class="testimonial-card">
+<p>
+“Yapay zeka sistemleri doktor süreçlerinde ciddi verim sağladı.”
+</p>
+<h4>MedGlobal</h4>
+</div>
+
+<div class="testimonial-card">
+<p>
+“Bulut altyapısı ile kesintisiz hizmet sunabiliyoruz.”
+</p>
+<h4>Nova Health</h4>
+</div>
+
+</div>
+</section>
+
+<section class="contact" id="contact">
+
+<div class="contact-container">
+
+<h2 class="section-title">İletişim</h2>
+
+<form>
+<input type="text" placeholder="Ad Soyad">
+<input type="email" placeholder="E-Posta">
+<textarea rows="6" placeholder="Mesajınız"></textarea>
+<button type="submit">Gönder</button>
+</form>
+
+</div>
+</section>
+
+<footer>
+© 2026 HealthTech Systems — Tüm Hakları Saklıdır.
+</footer>
+
+</body>
+</html>
+```
